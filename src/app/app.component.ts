@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Filters from '../components/Filters';
+
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Product } from './shared/product.model';
 import { DataService } from './data.service';
 import { CartService } from './cart.service';
@@ -13,7 +17,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
 
   products: Product[];
 
@@ -66,6 +70,21 @@ export class AppComponent implements OnInit {
       this.products = this.originalData.products.slice(0);
       this.sortProducts('name');
     });
+  }
+
+  ngDoCheck() {
+    // console.log('check');
+
+    const filtersProps = {
+      categories: this.originalData && this.originalData.categories,
+      customFilters: this.customFilters,
+      priceFilters: this.priceFilters,
+      filterChange: this.onFilterChange.bind(this)
+    };
+
+    const el = document.getElementById('react-Filters');
+
+    el && ReactDOM.render(React.createElement(Filters, filtersProps), el);
   }
 
   onURLChange(url) {

@@ -6,6 +6,7 @@
           <app-url-form (urlChange)='onURLChange($event)'></app-url-form>
           <app-cart></app-cart>
           <app-filters #filtersComponent [categories]='originalData.categories' [customFilters]='customFilters' [priceFilters]='priceFilters' (filterChange)='onFilterChange($event)'></app-filters>
+          <div id="react-Filters"></div>
         </div>
       </div>
       <div class="col-9">

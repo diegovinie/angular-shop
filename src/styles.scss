@@ -3,6 +3,8 @@
 @import "./app/shared/colors";
 $font-family: 'Roboto', Helvetica, sans-serif;
 
+@import 'components/Filters/Filters.scss';
+
 html, body {
   font-family: $font-family;
   color: #444444;
