@@ -8,7 +8,6 @@ import { DataService } from './data.service';
 import { CartService } from './cart.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
 
-import { FiltersComponent } from './filters/filters.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
@@ -23,10 +22,9 @@ export class AppComponent implements OnInit, DoCheck {
 
   mainFilter: any;
 
-  currentSorting: string;
 
-  @ViewChild('filtersComponent', { static: true })
-  filtersComponent: FiltersComponent;
+
+  currentSorting: string;
 
   @ViewChild('searchComponent', { static: true })
   searchComponent: SearchBarComponent;
@@ -51,6 +49,8 @@ export class AppComponent implements OnInit, DoCheck {
   ];
 
   originalData: any = [];
+
+
 
   constructor(private dataService: DataService, private cartService: CartService) {  }
 
@@ -100,7 +100,6 @@ export class AppComponent implements OnInit, DoCheck {
       // Make a deep copy of the original data to keep it immutable
       this.products = this.originalData.products.slice(0);
       this.sortProducts('name');
-      this.filtersComponent.reset(this.customFilters, this.priceFilters);
       this.searchComponent.reset();
       this.cartService.flushCart();
     });
