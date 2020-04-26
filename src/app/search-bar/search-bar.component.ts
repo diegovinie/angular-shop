@@ -28,7 +28,7 @@ export class SearchBarComponent implements OnInit {
       1 if the search term length has increased
       0 if the search term remained equal
   */
-  private onSearchKeyup(search: string) {
+  onSearchKeyup(search: string) {
     let change = 0;
     if (search.length > this.previousSearch.length) {
       change = 1;
