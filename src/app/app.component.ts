@@ -21,10 +21,10 @@ export class AppComponent implements OnInit {
 
   currentSorting: string;
 
-  @ViewChild('filtersComponent')
+  @ViewChild('filtersComponent', { static: true })
   filtersComponent: FiltersComponent;
 
-  @ViewChild('searchComponent')
+  @ViewChild('searchComponent', { static: true })
   searchComponent: SearchBarComponent;
 
   sortFilters: any[] = [
