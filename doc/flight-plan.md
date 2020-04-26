@@ -1,6 +1,6 @@
 # Migrating to React
 
-+ Setup initial environment.
++ [Setup initial environment](add-jsx.md).
 
 + Migrate presentation components.
 
