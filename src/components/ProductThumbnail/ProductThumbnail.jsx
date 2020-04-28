@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './ProductThumbnail.scss';
+// import { CartService } from '../../app/cart.service';
 
 const ProductThumbnail = props => {
   const {
     product,
-    className
+    className,
+    state
   } = props;
 
   const [detailViewActive, setDetailViewActive] = useState(false);
@@ -13,7 +15,10 @@ const ProductThumbnail = props => {
     setDetailViewActive(!detailViewActive);
   };
 
-  const onAddToCart = e => {};
+  const onAddToCart = () => {
+    state && state.cartService && state.cartService.addProductToCart &&
+      state.cartService.addProductToCart(product);
+  };
 
   return (
     <div className={` product-thumbnail wrapper ${className} ${!product.available ? 'unavailable' : ''}`} >
