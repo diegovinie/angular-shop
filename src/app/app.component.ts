@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Filters from '../components/Filters';
+import Showcase from '../components/Showcase';
 
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Product } from './shared/product.model';
@@ -85,6 +86,14 @@ export class AppComponent implements OnInit, DoCheck {
     const el = document.getElementById('react-Filters');
 
     el && ReactDOM.render(React.createElement(Filters, filtersProps), el);
+
+    const showcaseProps = {
+      products: this.products
+    };
+
+    const showcaseEl = document.getElementById('react-Showcase');
+
+    showcaseEl && ReactDOM.render(React.createElement(Showcase, showcaseProps), showcaseEl);
   }
 
   onURLChange(url) {

@@ -1,0 +1,10 @@
+.showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  & .product-thumbnail {
+    min-height: 0.125rem;
+    margin-bottom: 2rem;
+  }
+}

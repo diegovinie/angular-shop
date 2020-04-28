@@ -4,6 +4,8 @@
 $font-family: 'Roboto', Helvetica, sans-serif;
 
 @import 'components/Filters/Filters.scss';
+@import 'components/ProductThumbnail/ProductThumbnail.scss';
+@import 'components/Showcase/Showcase.scss';
 
 html, body {
   font-family: $font-family;
