@@ -6,7 +6,7 @@ const ProductThumbnail = props => {
   const {
     product,
     className,
-    state
+    actions
   } = props;
 
   const [detailViewActive, setDetailViewActive] = useState(false);
@@ -16,8 +16,7 @@ const ProductThumbnail = props => {
   };
 
   const onAddToCart = () => {
-    state && state.cartService && state.cartService.addProductToCart &&
-      state.cartService.addProductToCart(product);
+    actions.addProductToCart(product);
   };
 
   return (

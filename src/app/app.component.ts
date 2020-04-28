@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Filters from '../components/Filters';
 import Showcase from '../components/Showcase';
-import { init } from '../components/state.jsx';
+import { initState } from '../components/state.jsx';
 
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Product } from './shared/product.model';
@@ -54,11 +54,12 @@ export class AppComponent implements OnInit, DoCheck {
 
 
 
-  constructor(private dataService: DataService, private cartService: CartService) {  }
+  constructor(private dataService: DataService, private cartService: CartService) {
+    // initialize react psudo-store
+    initState({ cartService: this.cartService });
+  }
 
   ngOnInit() {
-    // initialize react psudo-store
-    init({ cartService: this.cartService });
 
     this.dataService.getData().then(data => {
       this.originalData = data;

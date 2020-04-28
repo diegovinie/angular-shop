@@ -1,4 +1,10 @@
 import ProductThumbnail from './ProductThumbnail.jsx';
-import { connect } from '../state.jsx';
+import { connect, getActionFromService } from '../state.jsx';
 
-export default connect(ProductThumbnail);
+const mapStateToProps = state => ({
+  actions: {
+    addProductToCart: getActionFromService(state.cartService, 'addProductToCart')
+  }
+});
+
+export default connect(mapStateToProps)(ProductThumbnail);
