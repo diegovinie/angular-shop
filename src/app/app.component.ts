@@ -3,7 +3,6 @@ import { Product } from './shared/product.model';
 import { DataService } from './data.service';
 import { CartService } from './cart.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 
 import { mountComponent } from '../adapters';
 import { initState } from '../components/state.jsx';
@@ -26,8 +25,9 @@ export class AppComponent implements OnInit, DoCheck {
 
   currentSorting: string;
 
-  @ViewChild('searchComponent', { static: true })
-  searchComponent: SearchBarComponent;
+  // pending
+  // @ViewChild('searchComponent', { static: true })
+  // searchComponent: SearchBarComponent;
 
   sortFilters: any[] = [
     { name: 'Nombre (A to Z)', value: 'name' },
@@ -87,6 +87,11 @@ export class AppComponent implements OnInit, DoCheck {
 
     // Showcase
     mountComponent('react-Showcase')(Showcase, { products: this.products });
+
+    // SearchBar
+    mountComponent('react-SearchBar')(SearchBar, {
+      searchChange: this.onSearchChange.bind(this)
+    });
   }
 
   onURLChange(url) {
@@ -102,7 +107,8 @@ export class AppComponent implements OnInit, DoCheck {
       // Make a deep copy of the original data to keep it immutable
       this.products = this.originalData.products.slice(0);
       this.sortProducts('name');
-      this.searchComponent.reset();
+      // this clean SearchBar when url change, is pending
+      // this.searchComponent.reset();
       this.cartService.flushCart();
     });
   }
