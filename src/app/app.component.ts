@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Filters from '../components/Filters';
-import Showcase from '../components/Showcase';
-import { initState } from '../components/state.jsx';
-
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Product } from './shared/product.model';
 import { DataService } from './data.service';
 import { CartService } from './cart.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
-
 import { SearchBarComponent } from './search-bar/search-bar.component';
 
+import { mountComponent } from '../adapters';
+import { initState } from '../components/state.jsx';
+import Filters from '../components/Filters';
+import Showcase from '../components/Showcase';
+import SearchBar from '../components/SearchBar';
 
 @Component({
   selector: 'app-root',
@@ -79,24 +77,16 @@ export class AppComponent implements OnInit, DoCheck {
   ngDoCheck() {
     // console.log('check');
 
-    const filtersProps = {
+    // Filters
+    mountComponent('react-Filters')(Filters, {
       categories: this.originalData && this.originalData.categories,
       customFilters: this.customFilters,
       priceFilters: this.priceFilters,
       filterChange: this.onFilterChange.bind(this)
-    };
+    });
 
-    const el = document.getElementById('react-Filters');
-
-    el && ReactDOM.render(React.createElement(Filters, filtersProps), el);
-
-    const showcaseProps = {
-      products: this.products
-    };
-
-    const showcaseEl = document.getElementById('react-Showcase');
-
-    showcaseEl && ReactDOM.render(React.createElement(Showcase, showcaseProps), showcaseEl);
+    // Showcase
+    mountComponent('react-Showcase')(Showcase, { products: this.products });
   }
 
   onURLChange(url) {
