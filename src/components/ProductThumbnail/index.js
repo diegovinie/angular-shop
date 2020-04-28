@@ -1,5 +1,5 @@
 import ProductThumbnail from './ProductThumbnail.jsx';
-import { connect, getActionFromService } from '../state.jsx';
+import { connect, getActionFromService } from '../../state.jsx';
 
 const mapStateToProps = state => ({
   actions: {

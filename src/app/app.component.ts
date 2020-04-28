@@ -5,7 +5,7 @@ import { CartService } from './cart.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
 
 import { mountComponent } from '../adapters';
-import { initState } from '../components/state.jsx';
+import { initState } from '../state.jsx';
 import Filters from '../components/Filters';
 import Showcase from '../components/Showcase';
 import SearchBar from '../components/SearchBar';
