@@ -11,6 +11,7 @@ import Showcase from '../components/Showcase';
 import SearchBar from '../components/SearchBar';
 import Cart from '../components/Cart';
 import UrlForm from '../components/UrlForm';
+import SortFilters from '../components/SortFilters';
 
 @Component({
   selector: 'app-root',
@@ -101,6 +102,12 @@ export class AppComponent implements OnInit, DoCheck {
     // UrlForm
     mountComponent('react-UrlForm')(UrlForm, {
       urlChange: this.onURLChange.bind(this)
+    });
+
+    // SortFilters
+    mountComponent('react-SortFilters')(SortFilters, {
+      filters: this.sortFilters,
+      sortChange: this.sortProducts.bind(this)
     });
   }
 
