@@ -10,6 +10,7 @@ import Filters from '../components/Filters';
 import Showcase from '../components/Showcase';
 import SearchBar from '../components/SearchBar';
 import Cart from '../components/Cart';
+import UrlForm from '../components/UrlForm';
 
 @Component({
   selector: 'app-root',
@@ -96,6 +97,11 @@ export class AppComponent implements OnInit, DoCheck {
 
     // Cart
     mountComponent('react-Cart')(Cart, {});
+
+    // UrlForm
+    mountComponent('react-UrlForm')(UrlForm, {
+      urlChange: this.onURLChange.bind(this)
+    });
   }
 
   onURLChange(url) {

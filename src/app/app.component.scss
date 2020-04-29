@@ -37,7 +37,7 @@ app-showcase, #react-Showcase {
   position: relative;
 }
 
-app-url-form{
+app-url-form, #react-UrlForm {
   position: absolute;
   top: -55px;
 }
@@ -46,7 +46,7 @@ app-url-form{
 @media only screen
   and (min-device-width: 320px)
   and (max-device-width: 480px) {
-    app-url-form{
+    app-url-form, #react-UrlForm {
         position: fixed;
         bottom: 20px;
         left: 10px;
