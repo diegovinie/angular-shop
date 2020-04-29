@@ -10,7 +10,7 @@
   z-index: 90000;
 }
 
-sort-filters{
+app-sort-filters{
   position: relative;
   z-index: 20;
 }
@@ -22,12 +22,12 @@ app-cart, #react-Cart {
   z-index: 99999999;
 }
 
-search-bar{
+app-search-bar, #react-SearchBar {
   position: relative;
   top: -8px;
 }
 
-showcase{
+app-showcase, #react-Showcase {
   position: relative;
   top: -39px;
   z-index: 10
@@ -37,7 +37,7 @@ showcase{
   position: relative;
 }
 
-url-form{
+app-url-form{
   position: absolute;
   top: -55px;
 }
@@ -46,13 +46,13 @@ url-form{
 @media only screen
   and (min-device-width: 320px)
   and (max-device-width: 480px) {
-    url-form{
+    app-url-form{
         position: fixed;
         bottom: 20px;
         left: 10px;
     }
 
-    filters{
+    app-filters, #react-Filters {
       position: fixed;
       top: 44px;
       right: -100%;
@@ -73,7 +73,7 @@ url-form{
     .main-container{
       padding-top: 34px;
     }
-    search-bar{
+    app-search-bar, #react-SearchBar {
       position: fixed;
       top: 0;
       width: 100%;
