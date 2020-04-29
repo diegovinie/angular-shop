@@ -9,6 +9,7 @@ import { initState } from '../state.jsx';
 import Filters from '../components/Filters';
 import Showcase from '../components/Showcase';
 import SearchBar from '../components/SearchBar';
+import Cart from '../components/Cart';
 
 @Component({
   selector: 'app-root',
@@ -92,6 +93,9 @@ export class AppComponent implements OnInit, DoCheck {
     mountComponent('react-SearchBar')(SearchBar, {
       searchChange: this.onSearchChange.bind(this)
     });
+
+    // Cart
+    mountComponent('react-Cart')(Cart, {});
   }
 
   onURLChange(url) {

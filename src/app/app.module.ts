@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { CartComponent } from './cart/cart.component';
 import { SortFiltersComponent } from './sort-filters/sort-filters.component';
 
 import { DataService } from './data.service';
@@ -17,7 +16,7 @@ import { UrlFormComponent } from './url-form/url-form.component';
     // SearchBarComponent,
     // FiltersComponent,
     // ShowcaseComponent,
-    CartComponent,
+    // CartComponent,
     // ProductThumbnailComponent,
     SortFiltersComponent,
     UrlFormComponent
