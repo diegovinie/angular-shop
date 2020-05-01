@@ -11,6 +11,8 @@ v1.4            search bar migrated
 v1.5            All components migrates, the app and services left
 ```
 
+### [Migration notes](doc/README.md)
+
 There is a flight plan (that has changed a little) [here](doc/flight-plan.md)
 
 Este es un proyecto de ejemplo para mostrar una implementación de una aplicación de comercio / comercio electrónico elegante, sensible, compatible con cross browser (IE11) hecha en Angular.
