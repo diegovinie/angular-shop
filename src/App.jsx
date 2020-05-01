@@ -8,10 +8,13 @@ import UrlForm from './components/UrlForm';
 import SortFilters from './components/SortFilters';
 
 class App extends Component {
+  // it is preferred out of the state
+  mainFilter = {};
+
   state = {
     originalData: [],
 
-    currentSorting: '',
+    currentSorting: 'name',
 
     customFilters: [
       { name: 'Todo', value: 'all', checked: true },
@@ -50,14 +53,15 @@ class App extends Component {
 
   componentDidMount() {
     this.dataService.getData().then(data => {
+      this.mainFilter = {
+        search: '',
+        categories: data.categories.slice(0),
+        customFilter: this.state.customFilters[0],
+        priceFilter: this.state.priceFilters[0]
+      };
+
       this.setState({
         originalData: data,
-        mainFilter: {
-          search: '',
-          categories: data.categories.slice(0),
-          customFilter: this.state.customFilters[0],
-          priceFilter: this.state.priceFilters[0]
-        },
         // Make a deep copy of the original data to keep it immutable
         products: data.products.slice(0)
       });
@@ -68,7 +72,7 @@ class App extends Component {
     const { products } = this.state;
 
     if (prevState.products.length !== products.length) {
-      this.sortProducts('name');
+      this.sortProducts(this.state.currentSorting);
     }
   }
 
@@ -76,14 +80,15 @@ class App extends Component {
 
   onURLChange(url) {
     this.dataService.getRemoteData(url).subscribe(data => {
+      this.mainFilter = {
+        search: '',
+        categories: data.categories.slice(0),
+        customFilter: this.state.customFilters[0],
+        priceFilter: this.state.priceFilters[0]
+      };
+
       this.setState({
         originalData: data,
-        mainFilter: {
-          search: '',
-          categories: data.categories.slice(0),
-          customFilter: this.customFilters[0],
-          priceFilter: this.priceFilters[0]
-        },
         products: data.products.slice(0)
       });
       // this clean SearchBar when url change, is pending
@@ -94,9 +99,8 @@ class App extends Component {
   }
 
   onSearchChange(search) {
-    this.setState({
-      mainFilter: { ...this.state.mainFilter, search: search.search }
-    });
+    this.mainFilter.search = search.search;
+
 
     this.updateProducts({
       type: 'search',
@@ -126,16 +130,21 @@ class App extends Component {
   }
 
   updateProducts(filter) {
-    let productsSource = this.originalData.products;
-    const prevProducts = this.products;
+    const {
+      originalData,
+      products,
+    } = this.state;
+
+    let productsSource = originalData.products;
+    const prevProducts = [...products];
     let filterAllData = true;
     if ((filter.type === 'search' && filter.change === 1) || (filter.type === 'category' && filter.change === -1)) {
-      productsSource = this.products;
+      productsSource = products;
       filterAllData = false;
     }
     // console.log('filtering ' + productsSource.length + ' products')
 
-    this.products = productsSource.filter(product => {
+    const nextProducts = productsSource.filter(product => {
       // Filter by search
       if (filterAllData || filter.type === 'search') {
         if (!product.name.match(new RegExp(this.mainFilter.search, 'i'))) {
