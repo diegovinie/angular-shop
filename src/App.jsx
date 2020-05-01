@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
 import Filters from './components/Filters';
 import Showcase from './components/Showcase';
 import SearchBar from './components/SearchBar';
 import Cart from './components/Cart';
 import UrlForm from './components/UrlForm';
 import SortFilters from './components/SortFilters';
+import './App.scss';
 
 class App extends Component {
   // it is preferred out of the state

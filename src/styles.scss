@@ -10,6 +10,7 @@ $font-family: 'Roboto', Helvetica, sans-serif;
 @import 'components/Cart/Cart.scss';
 @import 'components/UrlForm/UrlForm.scss';
 @import 'components/SortFilters/SortFilters.scss';
+@import 'App.scss';
 
 html, body {
   font-family: $font-family;
