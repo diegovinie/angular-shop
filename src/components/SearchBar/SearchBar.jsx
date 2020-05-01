@@ -25,9 +25,11 @@ const SearchBar = props => {
   };
 
   const reset = () => {
-    setShowSearch(false);
-    setTimeout(() => { setShowSearch(true); });
+    setSearch({search: '', change: 0});
   };
+
+  // allow to call reset from out the component
+  SearchBar.reset = reset;
 
   return (
     <div id="react-SearchBar" className="wrapper">

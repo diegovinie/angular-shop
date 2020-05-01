@@ -91,13 +91,12 @@ class App extends Component {
       };
 
       this.cartService.flushCart();
+      SearchBar.reset();
 
       this.setState({
         originalData: data,
         products: data.products.slice(0)
       });
-      // this clean SearchBar when url change, is pending
-      // this.searchComponent.reset();
     });
   }
 
