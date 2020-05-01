@@ -9,16 +9,6 @@ import { DataService } from './data.service';
 import { CartService } from './cart.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    // SearchBarComponent,
-    // FiltersComponent,
-    // ShowcaseComponent,
-    // CartComponent,
-    // ProductThumbnailComponent,
-    // SortFiltersComponent,
-    // UrlFormComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
