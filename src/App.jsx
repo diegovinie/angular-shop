@@ -196,16 +196,18 @@ class App extends Component {
       return true;
     });
 
+    this.setState({ products: nextProducts });
+
     // If the number of products increased after the filter has been applied then sort again
     // If the number of products remained equal, there's a high chance that the items have been reordered.
-    if (prevProducts.length <= this.products.length && this.products.length > 1) {
-      this.sortProducts(this.state.currentSorting);
-    }
+    // if (prevProducts.length <= products.length && products.length > 1) {
+    //   this.sortProducts(this.state.currentSorting);
+    // }
 
     // These two types of filters usually add new data to the products showcase so a sort is necessary
-    if (filter.type === 'custom' || filter.type === 'price') {
-      this.sortProducts(this.state.currentSorting);
-    }
+    // if (filter.type === 'custom' || filter.type === 'price') {
+    //   this.sortProducts(this.state.currentSorting);
+    // }
   }
 
   sortProducts(criteria) {
