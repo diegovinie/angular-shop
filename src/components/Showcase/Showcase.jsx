@@ -5,7 +5,7 @@ const Showcase = props => {
   const { products } = props;
 
   return (
-    <div className="showcase row">
+    <div id="react-Showcase" className="showcase row">
       {products.map(product => (
         <ProductThumbnail
           key={product.name}

@@ -12,7 +12,7 @@ const SortFilters = props => {
   };
 
   return (
-    <div className="sort-filters wrapper">
+    <div id="react-SortFilters" className="sort-filters wrapper">
       <label htmlFor="">Ordenar por</label>
       <select onChange={onSelectChange}>
         {filters.map(filter => (

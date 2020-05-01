@@ -24,7 +24,7 @@ const Filters = props => {
   };
 
   return (
-    <div className="Filters">
+    <div id="react-Filters" className="Filters">
       <button
         type="button"
         className="toggle-btn"

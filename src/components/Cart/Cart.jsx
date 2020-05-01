@@ -60,7 +60,7 @@ const Cart = props => {
 
   return (
     <>
-      <div className={`preview ${expanded ? 'expanded' : ''}`} >
+      <div id="react-Cart" className={`preview ${expanded ? 'expanded' : ''}`} >
         <button
           type="button"
           className={`circle ${!products.length || expanded ? 'not-shown' : ''}`}

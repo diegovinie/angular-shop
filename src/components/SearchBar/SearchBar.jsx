@@ -30,7 +30,7 @@ const SearchBar = props => {
   };
 
   return (
-    <div className="wrapper">
+    <div id="react-SearchBar" className="wrapper">
       {showSearch && (
         <input
           type="text"

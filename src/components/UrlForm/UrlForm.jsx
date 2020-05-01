@@ -13,7 +13,7 @@ const UrlForm = props => {
   }
 
   return (
-    <div className="wrapper">
+    <div id="react-UrlForm" className="wrapper">
       <div className={`fill ${expanded ? 'expanded' : ''}`} >
         <button
           type="button"

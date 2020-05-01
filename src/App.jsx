@@ -94,13 +94,12 @@ class App extends Component {
       // this clean SearchBar when url change, is pending
       // this.searchComponent.reset();
 
-      // this.cartService.flushCart();
+      this.cartService.flushCart();
     });
   }
 
   onSearchChange(search) {
     this.mainFilter.search = search.search;
-
 
     this.updateProducts({
       type: 'search',
