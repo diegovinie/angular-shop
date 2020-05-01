@@ -71,7 +71,10 @@ class App extends Component {
   componentDidUpdate(_, prevState) {
     const { products } = this.state;
 
-    if (prevState.products.length !== products.length) {
+    const sameFirst = prevState.products[0] === products[0];
+    const sameLength = prevState.products.length === products.length;
+    // trying to compare arrays
+    if (!sameLength || !sameFirst) {
       this.sortProducts(this.state.currentSorting);
     }
   }
@@ -87,14 +90,14 @@ class App extends Component {
         priceFilter: this.state.priceFilters[0]
       };
 
+      this.cartService.flushCart();
+
       this.setState({
         originalData: data,
         products: data.products.slice(0)
       });
       // this clean SearchBar when url change, is pending
       // this.searchComponent.reset();
-
-      this.cartService.flushCart();
     });
   }
 
