@@ -5,9 +5,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { DataService } from './data.service';
 import { CartService } from './cart.service';
-import { DataService2 } from './DataService';
 
 @NgModule({
   imports: [
@@ -17,8 +15,8 @@ import { DataService2 } from './DataService';
     JsonpModule
   ],
   providers: [
-    DataService,
-    CartService
+    // DataService,
+    // CartService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,7 +7,9 @@ import UrlForm from './components/UrlForm';
 import SortFilters from './components/SortFilters';
 import './App.scss';
 import { CartService } from './app/cart.service';
-import { DataService2 } from './app/DataService';
+import { DataService } from './services/DataService';
+import { initState } from './state.jsx';
+
 
 class App extends Component {
   // it is preferred out of the state
@@ -42,9 +44,12 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    // this.dataService = props.dataService;
-    this.dataService = new DataService2();
+
+    this.dataService = new DataService();
     this.cartService = new CartService();
+
+    // initialize react psudo-store
+    initState({ cartService: this.cartService });
 
     this.onURLChange = this.onURLChange.bind(this)
     this.onFilterChange = this.onFilterChange.bind(this)
@@ -85,7 +90,6 @@ class App extends Component {
 
   onURLChange(url) {
     this.dataService.getRemoteData(url).subscribe(data => {
-      console.log(data);
 
       this.mainFilter = {
         search: '',

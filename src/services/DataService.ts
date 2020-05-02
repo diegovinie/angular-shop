@@ -1,34 +1,27 @@
-
 import {throwError as observableThrowError,  Observable } from 'rxjs';
-
-import {catchError, map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-
+import { fromFetch } from 'rxjs/fetch';
+import {catchError, map, switchMap} from 'rxjs/operators';
 import { DATA } from './mock-data';
 
-
-
-
-
-@Injectable()
 export class DataService {
 
-  constructor(private http: Http) { }
+  constructor() { }
 
   getData(): Promise<any> {
     return Promise.resolve(DATA);
   }
 
   getRemoteData(url): Observable<any> {
-    return this.http.get(url).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError),);
+    return fromFetch(url).pipe(
+      switchMap(this.extractData),
+      catchError(this.handleError),
+    );
   }
 
-  private extractData(res: Response) {
+  private extractData(res) {
     const body = res.json();
-    return body || { };
+
+    return (body || { });
   }
 
   private handleError (error: any) {
