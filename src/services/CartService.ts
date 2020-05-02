@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Product } from './shared/product.model';
 import { Subject } from 'rxjs';
+import { Product } from '../app/shared/product.model';
 
 
-@Injectable()
 export class CartService {
 
   products: any[] = [];

@@ -5,7 +5,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { CartService } from './cart.service';
 
 @NgModule({
   imports: [

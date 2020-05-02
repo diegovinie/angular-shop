@@ -6,7 +6,8 @@ import Cart from './components/Cart';
 import UrlForm from './components/UrlForm';
 import SortFilters from './components/SortFilters';
 import './App.scss';
-import { CartService } from './app/cart.service';
+// import { CartService } from './app/cart.service';
+import { CartService } from './services/CartService';
 import { DataService } from './services/DataService';
 import { initState } from './state.jsx';
 
