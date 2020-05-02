@@ -6,6 +6,8 @@ import Cart from './components/Cart';
 import UrlForm from './components/UrlForm';
 import SortFilters from './components/SortFilters';
 import './App.scss';
+import { CartService } from './app/cart.service';
+import { DataService2 } from './app/DataService';
 
 class App extends Component {
   // it is preferred out of the state
@@ -40,9 +42,9 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
-    this.dataService = props.dataService;
-    this.cartService = props.cartService;
+    // this.dataService = props.dataService;
+    this.dataService = new DataService2();
+    this.cartService = new CartService();
 
     this.onURLChange = this.onURLChange.bind(this)
     this.onFilterChange = this.onFilterChange.bind(this)
@@ -83,6 +85,8 @@ class App extends Component {
 
   onURLChange(url) {
     this.dataService.getRemoteData(url).subscribe(data => {
+      console.log(data);
+
       this.mainFilter = {
         search: '',
         categories: data.categories.slice(0),

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { DataService } from './data.service';
 import { CartService } from './cart.service';
+import { DataService2 } from './DataService';
 
 @NgModule({
   imports: [

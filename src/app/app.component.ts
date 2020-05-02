@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     mountComponent('react-App')(App, {
-      cartService: this.cartService,
+      // cartService: this.cartService,
       dataService: this.dataService
     });
   }

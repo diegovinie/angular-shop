@@ -20,7 +20,7 @@
   "products": [
     {
       "id": 1,
-      "name": "Lorem",
+      "name": "Lorena",
       "price": "60.000",
       "available": true,
       "best_seller": true,
@@ -96,7 +96,7 @@
     },
     {
       "id": 7,
-      "name": "adipiscing",
+      "name": "adita",
       "price": "50.000",
       "available": false,
       "best_seller": false,
