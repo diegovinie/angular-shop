@@ -464,7 +464,7 @@ const Cart = props => {
     className: "circle ".concat(!products.length || expanded ? 'not-shown' : ''),
     onClick: onCartClick
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "../../assets/cart_white.svg",
+    src: "../assets/cart_white.svg",
     alt: "cart"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "indicator"
@@ -746,7 +746,7 @@ const ProductThumbnail = props => {
     className: "cart",
     onClick: onAddToCart
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "../../assets/cart_primary.svg",
+    src: "../assets/cart_primary.svg",
     alt: ""
   }))))), !product.available && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "not-available"

@@ -48,7 +48,7 @@ const ProductThumbnail = props => {
                     className="cart"
                     onClick={onAddToCart}
                   >
-                    <img src="../../assets/cart_primary.svg" alt="" />
+                    <img src="../assets/cart_primary.svg" alt="" />
                   </button>
                 </div>
               </div>

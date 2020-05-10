@@ -75,7 +75,7 @@ const Cart = props => {
           className={`circle ${!products.length || expanded ? 'not-shown' : ''}`}
           onClick={onCartClick}
         >
-          <img src="../../assets/cart_white.svg" alt="cart" />
+          <img src="../assets/cart_white.svg" alt="cart" />
           <div className="indicator">
             <span>{numProducts}</span>
           </div>
