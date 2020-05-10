@@ -6,11 +6,6 @@ import Cart from './components/Cart';
 import UrlForm from './components/UrlForm';
 import SortFilters from './components/SortFilters';
 import './App.scss';
-// import { CartService } from './app/cart.service';
-// import { CartService } from './services/CartService';
-// import { DataService } from './services/DataService';
-// import { initState } from './state.jsx';
-
 
 class App extends Component {
   // it is preferred out of the state
@@ -46,13 +41,8 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    // this.dataService = new DataService();
-    // this.cartService = new CartService();
     this.dataService = props.dataService;
     this.cartService = props.cartService;
-
-    // initialize react psudo-store
-    // initState({ cartService: this.cartService });
 
     this.onURLChange = this.onURLChange.bind(this)
     this.onFilterChange = this.onFilterChange.bind(this)
