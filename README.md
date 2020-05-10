@@ -21,4 +21,4 @@ v1.8            Angular root component removed
 
 -------
 
-### [Original README](legacy-readme.md)
+### [Original README](doc/legacy-readme.md)
