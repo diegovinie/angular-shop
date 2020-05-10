@@ -1,5 +1,8 @@
 # Angular Shop
 
+## Demo
+https://diegovinie.github.io/ng2react-shop/
+
 ## Being migrated to React
 Please check tags for progress:
 ```
