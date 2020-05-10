@@ -4,8 +4,7 @@ import { connect, getActionFromService } from '../../state.jsx';
 const mapStateToProps = state => {
   const service = state.cartService;
   return {
-    products: service.products,
-    cartTotal: service.cartTotal,
+    subject: service.productAdded$,
     actions: {
       deleteProductFromCart: getActionFromService(service, 'deleteProductFromCart')
     }

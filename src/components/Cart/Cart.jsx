@@ -6,11 +6,11 @@ const PRODUCT_HEIGHT = 48;
 
 const Cart = props => {
   const {
-    products,
-    cartTotal,
+    subject,
     actions
   } = props;
 
+  const [{products, cartTotal}, setState] = useState({products: [], cartTotal: 0})
   const [expanded, setExpanded] = useState(false);
   const [expandedHeight, setExpandedHeight] = useState('0');
   const [animatePlop, setAnimatePlop] = useState(false);
@@ -33,6 +33,15 @@ const Cart = props => {
   };
 
   const currency = num => num.toLocaleString();
+
+  useEffect(
+    () => {
+      subject.subscribe(setState);
+
+      return subject.unsubscribe;
+    },
+    []
+  );
 
   useEffect(
     () => {
