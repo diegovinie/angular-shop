@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { Product } from '../app/shared/product.model';
+import { Product } from '../shared/product.model';
 
 
 export class CartService {
