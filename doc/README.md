@@ -80,3 +80,5 @@ const onSearchKeyup = e => {
 };
 
 ```
+## Adapting RxJS services
+> [Recomended lecture](https://blog.logrocket.com/rxjs-with-react-hooks-for-state-management/)
