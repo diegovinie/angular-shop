@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Product } from 'shared/models';
 import './ProductThumbnail.scss';
-import { Product } from 'shared/product.model';
 
 interface ProductThumbnailProps {
   product: Product;

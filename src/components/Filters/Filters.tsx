@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Category } from 'shared/category.model';
-import { Filter } from 'shared/filter.model';
+import { Filter, Category } from 'shared/models';
 import './Filters.scss';
 
 export interface FiltersProps {

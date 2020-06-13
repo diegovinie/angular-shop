@@ -8,3 +8,14 @@ export class Product {
   img: string;
   description: string;
 }
+
+export class Filter {
+  name: string;
+  value: string;
+  checked: boolean;
+}
+
+export class Category {
+  categori_id: number;
+  name: string;
+}
