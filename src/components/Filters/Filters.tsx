@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
+import { Category } from 'shared/category.model';
+import { Filter } from 'shared/filter.model';
 import './Filters.scss';
 
-const Filters = props => {
+export interface FiltersProps {
+  categories: Array<Category>;
+  customFilters: Array<Filter>;
+  priceFilters: Array<Filter>;
+  filterChange: Function;
+}
+
+const Filters: React.FC<FiltersProps> = props => {
   const {
     categories,
     customFilters,
     priceFilters,
     filterChange,
-    label,
   } = props;
 
   const showFilters = true;
