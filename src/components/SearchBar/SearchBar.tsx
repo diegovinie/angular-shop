@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import './SearchBar.scss';
 
-const SearchBar = props => {
+export interface Props {
+  searchChange: Function;
+}
+
+interface StaticMethods {
+  reset?: () => void;
+}
+
+const SearchBar: React.FC<Props> & StaticMethods = props => {
   const { searchChange } = props;
 
-  const [showSearch, setShowSearch] = useState(true);
+  // const [showSearch, setShowSearch] = useState(true);
+  const showSearch = true;
   const [animatePlop, setAnimatePlop] = useState(false);
   const [search, setSearch] = useState({search: '', change: 0});
 
