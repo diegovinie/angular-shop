@@ -35,7 +35,7 @@ const Filters = props => {
         <button
           type="button"
           className="close-side-btn"
-          onClick={() => setIsShown(false)}
+          onClick={() => setSideShown(false)}
         >
           x
         </button>
