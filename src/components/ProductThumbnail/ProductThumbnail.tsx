@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import './ProductThumbnail.scss';
-// import { CartService } from '../../app/cart.service';
+import { Product } from 'shared/product.model';
 
-const ProductThumbnail = props => {
+interface ProductThumbnailProps {
+  product: Product;
+  className: string;
+  actions: {
+    addProductToCart: Function
+  };
+}
+
+const ProductThumbnail: React.FC<ProductThumbnailProps> = props => {
   const {
     product,
     className,
@@ -23,7 +31,7 @@ const ProductThumbnail = props => {
     <div className={` product-thumbnail wrapper ${className} ${!product.available ? 'unavailable' : ''}`} >
       <div className="info" >
         <div className="img-wrapper">
-          <img className="img" src={product.img} />
+          <img className="img" alt={product.name} src={product.img} />
           <div className="img-placeholder" />
         </div>
         <h5 className="title">{product.name}</h5>
