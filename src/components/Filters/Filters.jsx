@@ -31,7 +31,7 @@ const Filters = props => {
         onClick={() => setSideShown(true)}>
         Filters
       </button>
-      <div className="filters">
+      <div className={`filters ${sideShown ? 'side-shown' : ''}`}>
         <button
           type="button"
           className="close-side-btn"
