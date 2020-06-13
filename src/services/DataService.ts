@@ -1,12 +1,9 @@
 import {throwError as observableThrowError,  Observable } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
-import {catchError, map, switchMap} from 'rxjs/operators';
+import {catchError, switchMap} from 'rxjs/operators';
 import { DATA } from './mock-data';
 
 export class DataService {
-
-  constructor() { }
-
   getData(): Promise<any> {
     return Promise.resolve(DATA);
   }

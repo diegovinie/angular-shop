@@ -14,7 +14,8 @@ const Cart = props => {
   const [expanded, setExpanded] = useState(false);
   const [expandedHeight, setExpandedHeight] = useState('0');
   const [animatePlop, setAnimatePlop] = useState(false);
-  const [animatePopout, setAnimatePopout] = useState(false);
+  // const [animatePopout, setAnimatePopout] = useState(false);
+  const animatePopout = false;
 
   const numProducts = useMemo(
     () => products.reduce((acc, product) => {
@@ -40,6 +41,7 @@ const Cart = props => {
 
       return subject.unsubscribe;
     },
+    // eslint-disable-next-line
     []
   );
 
@@ -64,7 +66,7 @@ const Cart = props => {
 
       if (!products.length) setExpanded(false);
     },
-    [products.length]
+    [products.length, numProducts]
   );
 
   return (

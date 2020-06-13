@@ -138,7 +138,6 @@ class App extends Component {
     } = this.state;
 
     let productsSource = originalData.products;
-    const prevProducts = [...products];
     let filterAllData = true;
     if ((filter.type === 'search' && filter.change === 1) || (filter.type === 'category' && filter.change === -1)) {
       productsSource = products;

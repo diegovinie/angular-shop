@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { Product } from '../shared/models';
+// import { Product } from '../shared/models';
 
 export class CartService {
 
@@ -10,8 +10,6 @@ export class CartService {
 
 
   productAdded$ = this.productAddedSource.asObservable();
-
-  constructor() { }
 
   addProductToCart(product) {
     let exists = false;
