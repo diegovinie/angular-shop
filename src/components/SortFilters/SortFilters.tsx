@@ -1,13 +1,19 @@
 import React from 'react';
+import { Filter } from 'shared/models';
 import './SortFilters.scss';
 
-const SortFilters = props => {
+export interface Props {
+  filters: Array<Filter>;
+  sortChange: Function;
+}
+
+const SortFilters: React.FC<Props> = props => {
   const {
     filters,
     sortChange
   } = props;
 
-  const onSelectChange = e => {
+  const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     sortChange(e.target.value);
   };
 
