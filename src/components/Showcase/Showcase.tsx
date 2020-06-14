@@ -1,7 +1,13 @@
 import React from 'react';
-import ProductThumbnail from '../ProductThumbnail';
+import { Product } from 'shared/models';
+import ProductThumbnail from 'components/ProductThumbnail';
+import './Showcase.scss';
 
-const Showcase = props => {
+export interface Props {
+  products: Array<Product>;
+}
+
+const Showcase: React.FC<Props> = props => {
   const { products } = props;
 
   return (
