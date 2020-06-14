@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './UrlForm.scss';
 
-const UrlForm = props => {
+export interface Props {
+  urlChange: Function
+}
+
+const UrlForm: React.FC<Props> = props => {
   const { urlChange } = props;
 
   const [expanded, setExpanded] = useState(false);
