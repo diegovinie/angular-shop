@@ -1,4 +1,4 @@
-export class Product {
+export interface Product {
   id: number;
   name: string;
   price: string;
@@ -7,15 +7,16 @@ export class Product {
   categories: number[];
   img: string;
   description: string;
+  parsedPrice?: any;
 }
 
-export class Filter {
+export interface Filter {
   name: string;
   value: string;
   checked: boolean;
 }
 
-export class Category {
+export interface Category {
   categori_id: number;
   name: string;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Filter, Category } from 'shared/models';
+import { ChangeEvent } from 'shared/types';
 import './Filters.scss';
 
 export interface FiltersProps {
@@ -21,7 +22,7 @@ const Filters: React.FC<FiltersProps> = props => {
 
   const [sideShown, setSideShown] = useState(false);
 
-  const onInputChange = (filter, type) => e => {
+  const onInputChange = (filter: Filter | Category, type: string) => (e: ChangeEvent) => {
     filterChange({
       type,
       filter,
@@ -87,7 +88,7 @@ const Filters: React.FC<FiltersProps> = props => {
                       type="radio"
                       name="price"
                       defaultChecked={filter.checked}
-                      onClick={onInputChange(filter, 'price')}
+                      onChange={onInputChange(filter, 'price')}
                     />
                     <span className="circle">
                       <span className="fill"></span>
@@ -115,7 +116,7 @@ const Filters: React.FC<FiltersProps> = props => {
                       type="radio"
                       name="custom"
                       defaultChecked={filter.checked}
-                      onClick={onInputChange(filter, 'custom')}
+                      onChange={onInputChange(filter, 'custom')}
                     />
                     <span className="circle">
                       <span className="fill"></span>

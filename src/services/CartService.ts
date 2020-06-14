@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-// import { Product } from '../shared/models';
+import { Product } from '../shared/models';
 
 export class CartService {
 
@@ -11,7 +11,7 @@ export class CartService {
 
   productAdded$ = this.productAddedSource.asObservable();
 
-  addProductToCart(product) {
+  addProductToCart(product: Product) {
     let exists = false;
     const parsedPrice = parseFloat(product.price.replace(/\./g, '').replace(',', '.'));
     this.cartTotal += parsedPrice;
@@ -35,7 +35,7 @@ export class CartService {
     this.productAddedSource.next({ products: this.products, cartTotal: this.cartTotal });
   }
 
-  deleteProductFromCart(product) {
+  deleteProductFromCart(product: Product) {
     this.products = this.products.filter(_product => {
       if (_product.product.id === product.id) {
         this.cartTotal -= _product.product.parsedPrice * _product.quantity;

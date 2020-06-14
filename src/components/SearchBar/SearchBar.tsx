@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ChangeEvent, KeyboardEvent } from 'shared/types';
 import './SearchBar.scss';
 
 export interface Props {
@@ -17,12 +18,12 @@ const SearchBar: React.FC<Props> & StaticMethods = props => {
   const [animatePlop, setAnimatePlop] = useState(false);
   const [search, setSearch] = useState({search: '', change: 0});
 
-  const handleChange = e => {
+  const handleChange = (e: ChangeEvent) => {
     const value = e.target.value;
     setSearch({search: e.target.value, change: value.length - search.search.length})
   };
 
-  const onSearchKeyup = e => {
+  const onSearchKeyup = (e: KeyboardEvent) => {
     if (search.change !== 0) {
       searchChange(search);
     }

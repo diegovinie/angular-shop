@@ -8,14 +8,14 @@ export class DataService {
     return Promise.resolve(DATA);
   }
 
-  getRemoteData(url): Observable<any> {
+  getRemoteData(url: string): Observable<any> {
     return fromFetch(url).pipe(
       switchMap(this.extractData),
       catchError(this.handleError),
     );
   }
 
-  private extractData(res) {
+  private extractData(res: Response) {
     const body = res.json();
 
     return (body || { });
