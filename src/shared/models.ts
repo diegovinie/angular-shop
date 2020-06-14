@@ -8,6 +8,7 @@ export interface Product {
   img: string;
   description: string;
   parsedPrice?: any;
+  quantity?: any;
 }
 
 export interface Filter {

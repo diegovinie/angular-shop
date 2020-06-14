@@ -1,16 +1,35 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import { Subject, Subscription } from 'rxjs';
+import { Product } from 'shared/models';
 import './Cart.scss';
 
 const OFFSET_HEIGHT = 170;
 const PRODUCT_HEIGHT = 48;
 
-const Cart = props => {
+type CartItem = {
+  product: Product;
+  quantity: number;
+}
+
+type StateType = {
+  products: Array<CartItem>;
+  cartTotal: number[] | 0;
+}
+
+export interface Props {
+  subject: Subject<StateType>;
+  actions: {
+    deleteProductFromCart: Function
+  };
+}
+
+const Cart: React.FC<Props> = props => {
   const {
     subject,
     actions
   } = props;
 
-  const [{products, cartTotal}, setState] = useState({products: [], cartTotal: 0})
+  const [{products, cartTotal}, setState] = useState<StateType>({products: [], cartTotal: 0})
   const [expanded, setExpanded] = useState(false);
   const [expandedHeight, setExpandedHeight] = useState('0');
   const [animatePlop, setAnimatePlop] = useState(false);
@@ -18,14 +37,14 @@ const Cart = props => {
   const animatePopout = false;
 
   const numProducts = useMemo(
-    () => products.reduce((acc, product) => {
+    () => products.reduce((acc, product: CartItem) => {
       acc += product.quantity;
       return acc;
     }, 0),
     [products]
   );
 
-  const deleteProduct = product => () => {
+  const deleteProduct = (product: Product) => () => {
     actions.deleteProductFromCart(product);
   };
 
@@ -33,11 +52,15 @@ const Cart = props => {
     setExpanded(!expanded);
   };
 
-  const currency = num => num.toLocaleString();
+  const currency = (num: number | number[]) => num.toLocaleString();
 
+  function onEmit<StateType>(source: Subject<StateType>, nextFn: (value: StateType) => void): Subscription {
+    return source.subscribe(nextFn);
+  }
+  
   useEffect(
     () => {
-      subject.subscribe(setState);
+      onEmit<StateType>(subject, setState);
 
       return subject.unsubscribe;
     },
@@ -130,11 +153,6 @@ const Cart = props => {
       <div className={`overlay ${expanded ? 'show' : ''}`} />
     </>
   )
-};
-
-Cart.defaultProps = {
-  products: [],
-  cartTotal: 0
 };
 
 export default Cart;
