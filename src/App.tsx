@@ -5,7 +5,6 @@ import SearchBar from 'components/SearchBar';
 import Cart from 'components/Cart';
 import UrlForm from 'components/UrlForm';
 import SortFilters from 'components/SortFilters';
-import { Service } from 'shared/interfaces';
 import { Category, Filter } from 'shared/models';
 import { DataService } from 'services/DataService';
 import { CartService } from 'services/CartService';

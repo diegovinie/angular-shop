@@ -12,12 +12,12 @@ export class DataService implements Service {
 
   getRemoteData(url: string): Observable<DataResponse> {
     return fromFetch(url).pipe(
-      switchMap<Response, Function>((r: Response): any => this.extractData(r)),
+      switchMap<Response, Function>(this.extractData),
       catchError(this.handleError),
     );
   }
 
-  private extractData(res: Response) {
+  private extractData(res: Response): any {
     const body = res.json();
 
     return (body || { });
