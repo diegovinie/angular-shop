@@ -5,7 +5,7 @@ import SearchBar from 'components/SearchBar';
 import Cart from 'components/Cart';
 import UrlForm from 'components/UrlForm';
 import SortFilters from 'components/SortFilters';
-import { Category, Filter } from 'shared/models';
+import { Category, Filter, Product } from 'shared/models';
 import { DataService } from 'services/DataService';
 import { CartService } from 'services/CartService';
 import './App.scss';
@@ -15,16 +15,31 @@ interface Props {
   cartService: CartService;
 }
 
+interface State {
+  originalData: {
+    products: Product[],
+    categories: Category[]
+  };
+  currentSorting: string;
+  customFilters: Filter[];
+  priceFilters: Filter[];
+  sortFilters: Filter[];
+  products: Product[],
+}
+
 type MainFilter = {
-  search?: string;
-  categories?: Array<Category>;
+  categories: Array<Category>;
+  search: string;
   customFilter?: Filter;
   priceFilter?: Filter;
 }
 
-class App extends Component<Props> {
+class App extends Component<Props, State> {
   // it is preferred out of the state
-  mainFilter: MainFilter = {};
+  mainFilter: MainFilter = {
+    categories: [],
+    search: ''
+  };
 
   dataService: DataService;
 
@@ -60,7 +75,7 @@ class App extends Component<Props> {
     products: [],
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.dataService = props.dataService;
@@ -90,7 +105,7 @@ class App extends Component<Props> {
     });
   }
 
-  componentDidUpdate(_, prevState) {
+  componentDidUpdate(_: any, prevState: State) {
     const { products } = this.state;
 
     const sameFirst = prevState.products[0] === products[0];
@@ -103,7 +118,7 @@ class App extends Component<Props> {
 
   //////////// Methods ///////////////////////
 
-  onURLChange(url) {
+  onURLChange(url: string) {
     this.dataService.getRemoteData(url).subscribe(data => {
 
       this.mainFilter = {
@@ -114,7 +129,7 @@ class App extends Component<Props> {
       };
 
       this.cartService.flushCart();
-      SearchBar.reset();
+      SearchBar.reset && SearchBar.reset();
 
       this.setState({
         originalData: data,
@@ -123,7 +138,7 @@ class App extends Component<Props> {
     });
   }
 
-  onSearchChange(search) {
+  onSearchChange(search: {search: string, change: number}) {
     this.mainFilter.search = search.search;
 
     this.updateProducts({
@@ -132,7 +147,7 @@ class App extends Component<Props> {
     });
   }
 
-  onFilterChange(data) {
+  onFilterChange(data: {type: string, filter: any, isChecked: boolean, change: number }) {
     if (data.type === 'category') {
       if (data.isChecked) {
         this.mainFilter.categories.push(data.filter);
@@ -153,13 +168,13 @@ class App extends Component<Props> {
     });
   }
 
-  updateProducts(filter) {
+  updateProducts(filter: { type: string, change: number }) {
     const {
       originalData,
       products,
     } = this.state;
 
-    let productsSource = originalData.products;
+    let productsSource: Product[] = originalData.products;
     let filterAllData = true;
     if ((filter.type === 'search' && filter.change === 1) || (filter.type === 'category' && filter.change === -1)) {
       productsSource = products;
@@ -180,7 +195,7 @@ class App extends Component<Props> {
         let passCategoryFilter = false;
         product.categories.forEach(product_category => {
           if (!passCategoryFilter) {
-            passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
+            passCategoryFilter = this.mainFilter.categories.reduce((found: boolean, category: Category) => {
                 return found || product_category === category.categori_id;
             }, false);
           }
@@ -193,7 +208,7 @@ class App extends Component<Props> {
       // Filter by custom filters
       if (filterAllData || filter.type === 'custom') {
         let passCustomFilter = false;
-        const customFilter = this.mainFilter.customFilter.value;
+        const customFilter = this.mainFilter.customFilter && this.mainFilter.customFilter.value;
         if (customFilter === 'all') {
           passCustomFilter = true;
         } else if (customFilter === 'available' && product.available) {
@@ -211,7 +226,7 @@ class App extends Component<Props> {
       // Filter by price filters
       if (filterAllData || filter.type === 'price') {
         let passPriceFilter = false;
-        const customFilter = this.mainFilter.priceFilter.value;
+        const customFilter = this.mainFilter.priceFilter && this.mainFilter.priceFilter.value;
         const productPrice = parseFloat(product.price.replace(/\./g, '').replace(',', '.'));
         if (customFilter === 'all') {
           passPriceFilter = true;
@@ -229,23 +244,12 @@ class App extends Component<Props> {
     });
 
     this.setState({ products: nextProducts });
-
-    // If the number of products increased after the filter has been applied then sort again
-    // If the number of products remained equal, there's a high chance that the items have been reordered.
-    // if (prevProducts.length <= products.length && products.length > 1) {
-    //   this.sortProducts(this.state.currentSorting);
-    // }
-
-    // These two types of filters usually add new data to the products showcase so a sort is necessary
-    // if (filter.type === 'custom' || filter.type === 'price') {
-    //   this.sortProducts(this.state.currentSorting);
-    // }
   }
 
-  sortProducts(criteria) {
+  sortProducts(criteria: string) {
     // console.log('sorting ' + this.products.length + ' products')
     const products = this.state.products.slice()
-      .sort((a, b) => {
+      .sort((a: Product, b: Product) => {
         const priceComparison = parseFloat(a.price.replace(/\./g, '')
         .replace(',', '.')) - parseFloat(b.price.replace(/\./g, '').replace(',', '.'));
         if (criteria === 'priceDes') {
