@@ -5,6 +5,7 @@ import './Showcase.scss';
 
 export interface Props {
   products: Array<Product>;
+  className?: string;
 }
 
 const Showcase: React.FC<Props> = props => {
@@ -24,7 +25,8 @@ const Showcase: React.FC<Props> = props => {
 };
 
 Showcase.defaultProps = {
-  products: []
+  products: [],
+  className: ''
 };
 
 export default Showcase;

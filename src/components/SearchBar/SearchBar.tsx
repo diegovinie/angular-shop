@@ -4,6 +4,7 @@ import './SearchBar.scss';
 
 export interface Props {
   searchChange: Function;
+  className?: string;
 }
 
 interface StaticMethods {
@@ -71,5 +72,9 @@ const SearchBar: React.FC<Props> & StaticMethods = props => {
     </div>
   );
 };
+
+SearchBar.defaultProps = {
+  className: ''
+}
 
 export default SearchBar;

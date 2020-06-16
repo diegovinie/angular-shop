@@ -1,18 +1,41 @@
 import React, { Component } from 'react';
-import Filters from './components/Filters';
-import Showcase from './components/Showcase';
-import SearchBar from './components/SearchBar';
-import Cart from './components/Cart';
-import UrlForm from './components/UrlForm';
-import SortFilters from './components/SortFilters';
+import Filters from 'components/Filters';
+import Showcase from 'components/Showcase';
+import SearchBar from 'components/SearchBar';
+import Cart from 'components/Cart';
+import UrlForm from 'components/UrlForm';
+import SortFilters from 'components/SortFilters';
+import { Service } from 'shared/interfaces';
+import { Category, Filter } from 'shared/models';
+import { DataService } from 'services/DataService';
+import { CartService } from 'services/CartService';
 import './App.scss';
 
-class App extends Component {
+interface Props {
+  dataService: DataService;
+  cartService: CartService;
+}
+
+type MainFilter = {
+  search?: string;
+  categories?: Array<Category>;
+  customFilter?: Filter;
+  priceFilter?: Filter;
+}
+
+class App extends Component<Props> {
   // it is preferred out of the state
-  mainFilter = {};
+  mainFilter: MainFilter = {};
+
+  dataService: DataService;
+
+  cartService: CartService;
 
   state = {
-    originalData: [],
+    originalData: {
+      products: [],
+      categories: []
+    },
 
     currentSorting: 'name',
 

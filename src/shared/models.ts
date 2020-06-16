@@ -14,7 +14,7 @@ export interface Product {
 export interface Filter {
   name: string;
   value: string;
-  checked: boolean;
+  checked?: boolean;
 }
 
 export interface Category {

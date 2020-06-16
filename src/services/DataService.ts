@@ -2,6 +2,7 @@ import {throwError as observableThrowError,  Observable } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import {catchError, switchMap} from 'rxjs/operators';
 import { Service } from 'shared/interfaces';
+import { DataResponse } from 'shared/types';
 import { DATA } from './mock-data';
 
 export class DataService implements Service {
@@ -9,9 +10,9 @@ export class DataService implements Service {
     return Promise.resolve(DATA);
   }
 
-  getRemoteData(url: string): Observable<any> {
+  getRemoteData(url: string): Observable<DataResponse> {
     return fromFetch(url).pipe(
-      switchMap(this.extractData),
+      switchMap<Response, Function>((r: Response): any => this.extractData(r)),
       catchError(this.handleError),
     );
   }
