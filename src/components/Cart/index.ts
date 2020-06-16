@@ -1,5 +1,5 @@
 import Cart from './Cart';
-import { connect, getActionFromService } from 'state.jsx';
+import { connect, getActionFromService } from 'store';
 
 const mapStateToProps = (state: any) => {
   const service = state.cartService;

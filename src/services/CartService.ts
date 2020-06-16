@@ -1,7 +1,8 @@
 import { Subject } from 'rxjs';
 import { Product } from '../shared/models';
+import { Service } from 'shared/interfaces';
 
-export class CartService {
+export class CartService implements Service {
 
   products: any[] = [];
   cartTotal = 0;

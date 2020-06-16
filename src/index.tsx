@@ -4,7 +4,7 @@ import './styles.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { initState } from './state.jsx';
+import { initState } from './store';
 import { CartService } from './services/CartService';
 import { DataService } from './services/DataService';
 
